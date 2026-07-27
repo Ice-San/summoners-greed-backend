@@ -24,8 +24,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 11
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -40,7 +38,7 @@ jobs:
         run: pnpm exec tsc --noEmit
 
       - name: Lint
-        run: pnpx @biomejs/biome ci .
+        run: pnpm exec biome ci .
 
   build:
     name: Build Validation
@@ -51,8 +49,6 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
@@ -75,13 +71,12 @@ jobs:
 
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 9
-          
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22
+          cache: 'pnpm'
 
       - name: Audit production dependencies
         run: pnpm audit --prod

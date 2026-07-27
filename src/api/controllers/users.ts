@@ -18,7 +18,6 @@ export const getUser = (req: Request, res: Response) => {
     });
     return;
   }
-  
 
   res.status(200).send({
     status: 200,
